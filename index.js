@@ -61,3 +61,86 @@ const STORE = [
 let questionNumber = 1;
 
 let correctAnswers = 0;
+
+function questionsPage () {
+  return `
+  <section class="questions-page" role="main">
+  <h3 class="question"></h3>
+
+  <form>
+    <fieldset>
+      <label>
+        <input class="class" type="radio" name="option" required></label>
+        <span></span>
+      </label>
+
+      <label>
+        <input class="class" type="radio" name="option" required></label>
+        <span></span>
+      </label>
+
+      <label>
+          <input class="class" type="radio" name="option" required></label>
+          <span></span>
+      </label>
+
+      <label>
+            <input class="class" type="radio" name="option" required></label>
+            <span></span>
+      </label>    
+    </fieldset>
+
+    <button id="js-submit">Submit</button>
+
+  </form>
+  <div id="progress">
+    <span id="question-count">Question:</span>
+    <span id="correct-answers">Answered Correctly:</span>
+  </div>
+</section>`;
+}
+
+//variable for correct feedback
+const correctFeedback = `
+<section class="feedback-page" role="main">
+  <h3>You got it right!</h3>
+  <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
+  <p class="correct-ans">The correct answer was:</p>
+  <button id="js-next">Next</button>
+</section>`
+
+//variable for incorrect feedback
+const wrongFeedback = `
+<section class="feedback-page" role="main">
+  <h3>Wrong answer!</h3>
+  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
+  <p class="correct-ans">The correct answer was:</p>
+  <button id="js-next">Next</button>
+</section>`
+
+//results page
+function renderResultsPage(){
+  if () {
+ $('').html(`<div class="results">
+  <h3></h3>
+  <img src="">
+  <p>You got___out of 5 right</p>
+  <button class="js-restart">Restart</button>
+</div>`);
+}
+else if () {
+$('').html(`<div class="results">
+<h3></h3>
+<img src="">
+<p>You got___out of 5 right</p>
+<button class="js-restart">Restart</button>
+</div>`);
+}else {
+$('').html(`<div class="results">
+<h3></h3>
+<img src="">
+<p>You got___out of 5 right</p>
+<button class="js-restart">Restart</button>
+</div>`)
+}
+}
