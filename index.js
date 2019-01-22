@@ -37,18 +37,27 @@ Escapade, Come Back to Me and Black Cats are songs from what Janet Jackson album
 
 const STORE = [
     {question: "Which of these songs was a hit by Whitney Houston in 1990?",
-     answers: ["exhale";"Im every woman";"I Will Always Love You"; "the greatest love of all"],
-     correct: "I Will Always Love You"},
+     answers: ["exhale", "Im every woman","I Will Always Love You", "the greatest love of all"],
+     correct: "I Will Always Love You"
+     number: 1},
      {question:"Which r&b male/group is known to beg in his/their music?",
       answers: ["Tony Toni Tony", "Keith Sweat", "Jodeci", "R. Kelly" ],
       correct: "Keith Sweat"},
+      number: 2,
     {question: "Which 90s R&B song was considered the first mashup to be on the billboards top 100?",
      answers:["'Youre all I need' by Mary J Blige feat Method Man","'Scream' by Michael Jackson/Janet Jackson", "'I'll be missing you' Puff Daddy and the family","Right here/Human nature remix by SWV" ]
-     correct: "Right here/Human nature remix by SWV"},
+     correct: "Right here/Human nature remix by SWV",
+     number: 3},
      {question: "Mariah Carey had a hit song in 1995 with what singer/group?",
       answers: ["Boyz II Men", "Babyface", "Whitney Houston", "Luther Vandross"] 
-      correct: "Boyz II Men"},
+      correct: "Boyz II Men",
+      number: 4},
       {question: "Escapade, Come Back to Me and Black Cats are songs from what Janet Jackson album?",
       answers: ["Control", "Rhythym Nation 1814", "Janet", "All for you"]
-      correct: "Rhythym Nation 1814"}
+      correct: "Rhythym Nation 1814",
+      number: 5}
 ];
+
+let questionNumber = 1;
+
+let correctAnswers = 0;
