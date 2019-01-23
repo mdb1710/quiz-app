@@ -1,40 +1,5 @@
 'use strict';
 
-/*
-questions outline
-
-Which of these songs was a hit by Whitney Houston in 1990?
---I Will Always Love You
--exhale
--Im every woman
--the greatest love of all
-
-Which r&b male/group is known to beg in his/their music:
---Keith Sweat
--R. Kelly
--Tony Toni Tony
-- Jodeci
-
-Which 90s R&B song was considered the first mashup to be on the billboards top 100.
--- "Right here/Human nature remix" by SWV
-- 'Scream' by Michael Jackson/Janet Jackson
-- 'I'll be missing you' Puff Daddy and the family
-- 'Youre all I need' by Mary J Blige feat Method Man
-
-Mariah Carey had a hit song in 1995 with what singer/group?
--- Boyz II Men
--Babyface
--Whitney Houston
--Luther Vandross
-
-Escapade, Come Back to Me and Black Cats are songs from what Janet Jackson album?
--- Rhythym Nation 1814
-- Janet
-- Control
-- All for you
-
-*/
-
 const STORE = [
   {question: 'Which of these songs was a hit by Whitney Houston in 1990?',
     answers: ['exhale', 'Im every woman','I Will Always Love You', 'the greatest love of all'],
@@ -63,7 +28,6 @@ let questionNumber = 1;
 let correctAnswers = 0;
 
 function questionsPage (questionNum) {
-  console.log(questionNum.question);
   return `
   <section class="questions-page" role="main">
   <h3 class="question">${questionNum.question}</h3>
@@ -74,26 +38,22 @@ function questionsPage (questionNum) {
         <input class="answer" type="radio" name="option" checked>
         <span>${questionNum.answers[0]}</span>
       </label>
-
       <label>
         <input class="answer" type="radio" name="option">
         <span>${questionNum.answers[1]}</span>
       </label>
-
       <label>
           <input class="answer" type="radio" name="option">
           <span>${questionNum.answers[2]}</span>
       </label>
-
       <label>
             <input class="answer" type="radio" name="option">
             <span>${questionNum.answers[3]}</span>
       </label>    
     </fieldset>
-
     <button id="js-submit">Submit</button>
-
   </form>
+  
   <div id="progress">
     <span id="question-count">Question: ${questionNumber} / 5 </span>
     <span id="correct-answers">Answered Correctly: ${correctAnswers}</span>
@@ -105,22 +65,17 @@ function questionsPage (questionNum) {
 
 function nextQuestion(){
   const questionNum = STORE[questionNumber -1];
-  
-  $('#container').html(questionsPage(questionNum)); 
-  
+  $('#container').html(questionsPage(questionNum));  
 }
-
 
 function quizStartButton(){
   $('#js-start-button').click(function (event){
     nextQuestion();
-    console.log('Button Pressed');
   });
 }
 
 function nextButton(){
   $('#container').on('click', '#js-next', function(event){
-    console.log(questionNumber);
     if (questionNumber === 5){
       renderResultsPage();
     } else {
@@ -142,14 +97,7 @@ function submitButton() {
     }
   });
 }
-//variable for correct feedback
-/*const correctFeedback = `
-<section class="feedback-page" role="main">
-  <h3>You got it right!</h3>
-  <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
-  <p class="correct-ans">The correct answer was:</p>
-  <button id="js-next">Next</button>
-</section>`;*/
+
 
 function renderCorrectFeedback() {
   $('#container').html(
@@ -162,14 +110,6 @@ function renderCorrectFeedback() {
   correctAnswers++;
 }
 
-//variable for incorrect feedback
-/*const wrongFeedback = `
-<section class="feedback-page" role="main">
-  <h3>Wrong answer!</h3>
-  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
-  <p class="correct-ans">The correct answer was:</p>
-  <button id="js-next">Next</button>
-</section>`;*/
 
 function renderWrongFeedback() {
   $('#container').html(
@@ -221,19 +161,19 @@ function handleNextQuestion(){
   questionNumber++; 
 }
 
-/*function restartButton(){
-  $('#container').click('.js-restart', function(event) {
+function restartButton(){
+  $('#container').on('click', '.js-restart', function(event) {
     questionNumber = 1;
     correctAnswers = 0;
-    nextButton();
+    nextQuestion();
   });
-}*/
+}
 
 function main(){
   quizStartButton();
   submitButton();
   nextButton();
-  //restartButton();
+  restartButton();
 
 }
 
