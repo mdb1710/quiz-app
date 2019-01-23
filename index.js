@@ -38,19 +38,22 @@ function questionsPage (questionNum) {
     <fieldset>
       <label>
         <input class="answer" type="radio" name="option" data-index-value=0  checked>
-        <span>${questionNum.answers[0]}</span>
+        ${questionNum.answers[0]}
       </label>
+      <br>
       <label>
         <input class="answer" type="radio" name="option" data-index-value=1 >
-        <span>${questionNum.answers[1]}</span>
+        ${questionNum.answers[1]}
       </label>
+      <br>
       <label>
           <input class="answer" type="radio" name="option" data-index-value=2 >
-          <span>${questionNum.answers[2]}</span>
+            ${questionNum.answers[2]}
       </label>
+      <br>
       <label>
             <input class="answer" type="radio" name="option" data-index-value=3 >
-            <span>${questionNum.answers[3]}</span>
+            ${questionNum.answers[3]}
       </label>    
     </fieldset>
     <button id="js-submit">Submit</button>
@@ -97,22 +100,25 @@ function submitButton() {
 }
 
 function renderCorrectFeedback() {
+  const displayAnswer = questions[STORE.questionNumber -1].answers[questions[STORE.questionNumber -1].correct];
   $('#container').html(
     `<section class="feedback-page" role="main">
     <h3>You got it right!</h3>
     <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
     <br>
+    <h3 class="correct-ans">The correct answer was: ${displayAnswer}</h3>
     <button id="js-next">Next</button>
   </section>`);
   STORE.score++;
 }
 function renderWrongFeedback() {
+  const displayAnswer = questions[STORE.questionNumber -1].answers[questions[STORE.questionNumber -1].correct];
   $('#container').html(
     `<section class="feedback-page" role="main">
   <h3>Wrong answer!</h3>
   <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
   <br>
-  <h3 class="correct-ans">The correct answer was: ${questions[STORE.questionNumber -1].answers[questions[STORE.questionNumber -1].correct]}</h3>
+  <h3 class="correct-ans">The correct answer was: ${displayAnswer}</h3>
   <button id="js-next">Next</button>
 </section>`);
 }

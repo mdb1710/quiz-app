@@ -1,0 +1,103 @@
+body {
+text-decoration: black;
+position: relative;
+text-align: center;
+width: 100%;
+font-family: 'Righteous', cursive;
+
+}
+
+html { background: url('https://cdn.vox-cdn.com/thumbor/7mJsFfjoaWKjxYI5uG79FlJpyeM=/0x208:1600x1046/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/13070145/sony-original-walkman-tps-l2.0.1406747932.jpg') no-repeat center center fixed;
+
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#container {
+    background-color: rgba(255, 255, 255, 0.6);
+margin: 0 auto;
+width: 300px;
+height: 500px;
+display: inline-block;
+border: 5px solid rgba(49, 103, 142, 0.7);
+padding: 25px;
+border-radius: 15px;
+
+}
+
+fieldset {
+    border: 0px;
+    text-align: left;
+    margin-top: 50px;
+    
+}
+
+#starter-page {
+
+}
+
+button {
+margin-top: 5px;
+margin-bottom: 10px;
+width: 150px;
+height: 50px;
+border-radius: 5px 20px 5px;
+font-family: 'Righteous', cursive;
+font-size: 20px;
+background-color: rgba(247, 229, 229, 0.753);
+}
+
+button:hover{
+    background-color:  rgba(49, 103, 142, 0.7);
+}
+
+form {
+  margin: 0 auto;
+  
+}
+
+#progress{
+ margin-top: 25%;
+}
+
+#question-count {
+
+}
+
+#correct-answer {
+
+}
+
+label {
+ margin: 0 auto;
+ padding: 8px;
+ border: 1px solid rgb(107, 105, 104);
+ display: block;
+ width: 250px;
+ border-radius: 2px;
+ 
+}
+
+h2{
+    margin-bottom: 50px;
+}
+
+img {
+    width: 95%;
+    border: 1px solid black;
+    border-radius: 5px 20px 5px;
+    position: relative;
+    
+}
+
+label:hover{
+    background-color: rgba(247, 247, 9, 0.63);
+}
+
