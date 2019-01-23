@@ -32,7 +32,14 @@ const STORE = {
 function questionsPage (questionNum) {
   return `
   <section class="questions-page" role="main">
+
+  <div id="progress">
+  <span id="question-count">Question: ${STORE.questionNumber} / 5 </span>
+  <span id="correct-answers">Answered Correctly: ${STORE.score}</span>
+  </div>
+
   <h3 class="question">${questionNum.question}</h3>
+
 
   <form>
     <fieldset>
@@ -59,10 +66,7 @@ function questionsPage (questionNum) {
     <button id="js-submit">Submit</button>
   </form>
 
-  <div id="progress">
-    <span id="question-count">Question: ${STORE.questionNumber} / 5 </span>
-    <span id="correct-answers">Answered Correctly: ${STORE.score}</span>
-  </div>
+
 </section>`;
 }
 
@@ -104,7 +108,7 @@ function renderCorrectFeedback() {
   $('#container').html(
     `<section class="feedback-page" role="main">
     <h3>You got it right!</h3>
-    <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
+    <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif" alt="House Party dancing scene">
     <br>
     <h3 class="correct-ans">The correct answer was: ${displayAnswer}</h3>
     <button id="js-next">Next</button>
@@ -116,7 +120,7 @@ function renderWrongFeedback() {
   $('#container').html(
     `<section class="feedback-page" role="main">
   <h3>Wrong answer!</h3>
-  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
+  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif" alt="Regina Laughing Sarcastically">
   <br>
   <h3 class="correct-ans">The correct answer was: ${displayAnswer}</h3>
   <button id="js-next">Next</button>
@@ -125,23 +129,23 @@ function renderWrongFeedback() {
 function renderResultsPage(){
   if (STORE.score === 5) {
     $('#container').html(`<div class="results">
-  <h3></h3>
-  <img src="https://media.giphy.com/media/AqMBjUQW6k85G/giphy.gif">
+  <h3>You are a R&B trivia legend!</h3>
+  <img src="https://media.giphy.com/media/AqMBjUQW6k85G/giphy.gif" alt="Tupac Dancing" >
   <h3>You got ${STORE.score} out of 5 right</h3>
   <button class="js-restart">Restart</button>
 </div>`);
   }
   else if (STORE.score < 5 && STORE.score > 2) {
     $('#container').html(`<div class="results">
-<h3></h3>
-<img src="https://media.giphy.com/media/6elwBD77KFNlK/giphy.gif">
+<h3>You did alright, I guess...</h3>
+<img src="https://media.giphy.com/media/6elwBD77KFNlK/giphy.gif" alt="Menace to society laughing">
 <h3>You got ${STORE.score} out of 5 right</h3>
 <button class="js-restart">Restart</button>
 </div>`);
   }else {
     $('#container').html(`<div class="results">
-<h3></h3>
-<img src="https://media.giphy.com/media/WoM4QLxPmAHMk/giphy.gif">
+<h3>That was horrible! You need some culture.</h3>
+<img src="https://media.giphy.com/media/WoM4QLxPmAHMk/giphy.gif" alt="Getting Shot">
 <h3>You got ${STORE.score} out of 5 right</h3>
 <button class="js-restart">Restart</button>
 </div>`);
