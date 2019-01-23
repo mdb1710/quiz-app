@@ -71,22 +71,22 @@ function questionsPage (questionNum) {
   <form>
     <fieldset>
       <label>
-        <input class="answer" type="radio" name="option" value='1' checked>
+        <input class="answer" type="radio" name="option" checked>
         <span>${questionNum.answers[0]}</span>
       </label>
 
       <label>
-        <input class="answer" type="radio" name="option" value='2'>
+        <input class="answer" type="radio" name="option">
         <span>${questionNum.answers[1]}</span>
       </label>
 
       <label>
-          <input class="answer" type="radio" name="option" value='3'>
+          <input class="answer" type="radio" name="option">
           <span>${questionNum.answers[2]}</span>
       </label>
 
       <label>
-            <input class="answer" type="radio" name="option" value='4'>
+            <input class="answer" type="radio" name="option">
             <span>${questionNum.answers[3]}</span>
       </label>    
     </fieldset>
@@ -95,56 +95,12 @@ function questionsPage (questionNum) {
 
   </form>
   <div id="progress">
-    <span id="question-count">Question:</span>
-    <span id="correct-answers">Answered Correctly:</span>
+    <span id="question-count">Question: ${questionNumber} / 5 </span>
+    <span id="correct-answers">Answered Correctly: ${correctAnswers}</span>
   </div>
 </section>`;
 }
 
-//variable for correct feedback
-/*const correctFeedback = `
-<section class="feedback-page" role="main">
-  <h3>You got it right!</h3>
-  <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
-  <p class="correct-ans">The correct answer was:</p>
-  <button id="js-next">Next</button>
-</section>`;*/
-
-//variable for incorrect feedback
-/*const wrongFeedback = `
-<section class="feedback-page" role="main">
-  <h3>Wrong answer!</h3>
-  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
-  <p class="correct-ans">The correct answer was:</p>
-  <button id="js-next">Next</button>
-</section>`;*/
-
-//results page
-function renderResultsPage(){
-  //if () {
-  $('').html(`<div class="results">
-  <h3></h3>
-  <img src="">
-  <p>You got___out of 5 right</p>
-  <button class="js-restart">Restart</button>
-</div>`);
-}
-//else if () {
-$('').html(`<div class="results">
-<h3></h3>
-<img src="">
-<p>You got___out of 5 right</p>
-<button class="js-restart">Restart</button>
-</div>`);
-//}else {
-$('').html(`<div class="results">
-<h3></h3>
-<img src="">
-<p>You got___out of 5 right</p>
-<button class="js-restart">Restart</button>
-</div>`);
-//}
-//}
 
 
 function nextQuestion(){
@@ -164,6 +120,7 @@ function quizStartButton(){
 
 function nextButton(){
   $('#container').on('click', '#js-next', function(event){
+    console.log(questionNumber);
     if (questionNumber === 5){
       renderResultsPage();
     } else {
@@ -173,60 +130,86 @@ function nextButton(){
   });
 }
 
-/*function submitButton(){
-  $('#container').on('click', '#js-submit', function(event){
-    event.PreventDefault();
-    //const answer = $('input:required').sibling('span');
-    //function checkUserAnswer(answer){
-    const answer = $('input:required').sibling('span');
-    if (answer === STORE[questionNumber].correct){
-      return correctFeedback;
-    } else {
-      return wrongFeedback;
-    }    
-  });
-  /*const correct = checkUserAnswer(answer);
-    if (correct = true){
-      return correctFeedback;
-    } else {
-      return wrongFeedback;
-    }
-  //});
-}*/
-
-
-
-
 function submitButton() {
   $('#container').on('click', '#js-submit', function(event){
     event.preventDefault();
-
-    const answer = $('form input[type=radio]:checked').val()
-
-    
+    const answer = $('form input[type=radio]:checked').siblings('span').html();
     const userCorrect = checkAnswer(answer);
     if(userCorrect) {
-      $('#container').html(
-        `<section class="feedback-page" role="main">
-        <h3>You got it right!</h3>
-        <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
-        <p class="correct-ans">The correct answer was:</p>
-        <button id="js-next">Next</button>
-      </section>`);
+      renderCorrectFeedback();
     } else{
-      $('#container').html(
-      `<section class="feedback-page" role="main">
-      <h3>Wrong answer!</h3>
-      <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
-      <p class="correct-ans">The correct answer was:</p>
-      <button id="js-next">Next</button>
-    </section>`);
+      renderWrongFeedback();
     }
   });
 }
+//variable for correct feedback
+/*const correctFeedback = `
+<section class="feedback-page" role="main">
+  <h3>You got it right!</h3>
+  <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
+  <p class="correct-ans">The correct answer was:</p>
+  <button id="js-next">Next</button>
+</section>`;*/
+
+function renderCorrectFeedback() {
+  $('#container').html(
+    `<section class="feedback-page" role="main">
+    <h3>You got it right!</h3>
+    <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
+    <p class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</p>
+    <button id="js-next">Next</button>
+  </section>`);
+  correctAnswers++;
+}
+
+//variable for incorrect feedback
+/*const wrongFeedback = `
+<section class="feedback-page" role="main">
+  <h3>Wrong answer!</h3>
+  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
+  <p class="correct-ans">The correct answer was:</p>
+  <button id="js-next">Next</button>
+</section>`;*/
+
+function renderWrongFeedback() {
+  $('#container').html(
+    `<section class="feedback-page" role="main">
+  <h3>Wrong answer!</h3>
+  <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
+  <p class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</p>
+  <button id="js-next">Next</button>
+</section>`);
+}
+
+//results page
+function renderResultsPage(){
+  if (correctAnswers === 5) {
+    $('#container').html(`<div class="results">
+  <h3></h3>
+  <img src="https://media.giphy.com/media/AqMBjUQW6k85G/giphy.gif">
+  <p>You got ${correctAnswers} out of 5 right</p>
+  <button class="js-restart">Restart</button>
+</div>`);
+  }
+  else if (correctAnswers < 5 && correctAnswers > 2) {
+    $('#container').html(`<div class="results">
+<h3></h3>
+<img src="https://media.giphy.com/media/6elwBD77KFNlK/giphy.gif">
+<p>You got ${correctAnswers} out of 5 right</p>
+<button class="js-restart">Restart</button>
+</div>`);
+  }else {
+    $('#container').html(`<div class="results">
+<h3></h3>
+<img src="https://media.giphy.com/media/WoM4QLxPmAHMk/giphy.gif">
+<p>You got ${correctAnswers} out of 5 right</p>
+<button class="js-restart">Restart</button>
+</div>`);
+  }
+}
+
 
 function checkAnswer(answer){
-  console.log('answer', answer);
   if(answer === STORE[questionNumber -1].correct){
     return true;
   } else {
@@ -238,10 +221,19 @@ function handleNextQuestion(){
   questionNumber++; 
 }
 
+/*function restartButton(){
+  $('#container').click('.js-restart', function(event) {
+    questionNumber = 1;
+    correctAnswers = 0;
+    nextButton();
+  });
+}*/
+
 function main(){
   quizStartButton();
   submitButton();
   nextButton();
+  //restartButton();
 
 }
 
