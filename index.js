@@ -95,7 +95,7 @@ function renderCorrectFeedback() {
     `<section class="feedback-page" role="main">
     <h3>You got it right!</h3>
     <img src="https://media.giphy.com/media/13jxyFwcS7dsdy/giphy.gif">
-    <p class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</p>
+    <h3 class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</h3>
     <button id="js-next">Next</button>
   </section>`);
   correctAnswers++;
@@ -105,7 +105,7 @@ function renderWrongFeedback() {
     `<section class="feedback-page" role="main">
   <h3>Wrong answer!</h3>
   <img src="https://media.giphy.com/media/2DQgCiHu8VhJu/giphy.gif">
-  <p class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</p>
+  <h3 class="correct-ans">The correct answer was: ${STORE[questionNumber -1].correct}</h3>
   <button id="js-next">Next</button>
 </section>`);
 }
@@ -114,7 +114,7 @@ function renderResultsPage(){
     $('#container').html(`<div class="results">
   <h3></h3>
   <img src="https://media.giphy.com/media/AqMBjUQW6k85G/giphy.gif">
-  <p>You got ${correctAnswers} out of 5 right</p>
+  <h3>You got ${correctAnswers} out of 5 right</h3>
   <button class="js-restart">Restart</button>
 </div>`);
   }
@@ -122,14 +122,14 @@ function renderResultsPage(){
     $('#container').html(`<div class="results">
 <h3></h3>
 <img src="https://media.giphy.com/media/6elwBD77KFNlK/giphy.gif">
-<p>You got ${correctAnswers} out of 5 right</p>
+<h3>You got ${correctAnswers} out of 5 right</h3>
 <button class="js-restart">Restart</button>
 </div>`);
   }else {
     $('#container').html(`<div class="results">
 <h3></h3>
 <img src="https://media.giphy.com/media/WoM4QLxPmAHMk/giphy.gif">
-<p>You got ${correctAnswers} out of 5 right</p>
+<h3>You got ${correctAnswers} out of 5 right</h3>
 <button class="js-restart">Restart</button>
 </div>`);
   }
